@@ -25,8 +25,12 @@ function mission2_1() {
 
 function mission2_2() {
   const [입력1, 입력2] = arguments;
-  const dist = Math.abs(입력1 - 입력2);
-  출력(dist);
+  const [x1, y1] = 입력1.split(",");
+  const [x2, y2] = 입력2.split(",");
+  const dist1 = (x1 - x2) ** 2;
+  const dist2 = (y1 - y2) ** 2;
+  const res = Math.sqrt(dist1 + dist2);
+  출력(res);
 }
 
 function mission2_3() {
@@ -44,7 +48,7 @@ function mission2_3() {
 }
 
 // Uncaught TypeError: 입력1.toFixed is not a function
-// 입력1 타입이 숫자형이 아닌채로 들어와서 parseInt함수로 숫자형으로 바꿔줌
+// 입력1을 parseInt로 숫자로 바꿔줌
 function mission2_4() {
   let [입력1] = arguments;
   입력1 = parseInt(입력1).toFixed();

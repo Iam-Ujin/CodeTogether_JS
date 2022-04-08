@@ -30,7 +30,7 @@ function mission1_1() {
   const [입력1] = arguments;
   출력(입력1);
 }
-// 공백을 넣을 떄 " " <- 이거보단 `${} ${}` 템플리리터럴이 더 효율적
+// 공백을 넣을 떄 " " <- 이거보단 `${} ${}` 템플릿리터럴이 더 효율적
 function mission1_2() {
   const [입력1, 입력2] = arguments;
   const 더하기 = `${입력1} ${입력2}`;

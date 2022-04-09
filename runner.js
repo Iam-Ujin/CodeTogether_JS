@@ -1,44 +1,75 @@
+// 예외처리
+// 에러메시지
+const errorMessage = {
+  pleaseInput: "값을 입력해주세요!",
+  pleaseUseNumber: "숫자만 입력가능합니다!",
+};
+
+//공백 에러
+function getInputLengthError() {
+  const errorResult = [...arguments].some((each) => {
+    if (each.length === 0) {
+      출력(errorMessage.pleaseInput);
+      return true;
+    }
+  });
+
+  return errorResult;
+}
+
+//숫자 에러
+function getCheckIsNumber(number) {
+  if (typeof number !== "number" || isNaN(number)) {
+    return true;
+  }
+  return false;
+}
+
+// 미션코드
 function mission1_1() {
   const [입력1] = arguments;
   출력(입력1);
 }
-
+// 공백을 넣을 떄 " " <- 이거보단 `${} ${}` 템플리리터럴이 더 효율적
 function mission1_2() {
   const [입력1, 입력2] = arguments;
-  const 더하기 = 입력1 + " " + 입력2;
+  const 더하기 = `${입력1} ${입력2}`;
   출력(더하기);
 }
 
 function mission1_3() {
   const [입력1, 입력2] = arguments;
-  const 곱하기 = "곱하기 결과 입니다 -> " + (입력1 * 입력2).toFixed();
-  const 나누기 = "나누기 결과 입니다 -> " + (입력1 / 입력2).toFixed();
-  출력(곱하기 + 나누기);
+  const 곱하기 = "곱하기 결과 입니다 -> " + (입력1 * 입력2).toFixed(1);
+  const 나누기 = "나누기 결과 입니다 -> " + (입력1 / 입력2).toFixed(1);
+  const 결과 = `${곱하기}<br>${나누기}`;
+  출력(결과);
 }
 
 function mission2_1() {
   const [입력1, 입력2] = arguments;
+  if (getInputLengthError(...arguments)) return;
+
   const sum = parseInt(입력1) + parseInt(입력2);
   const div = (입력1 / 입력2).toFixed(2);
   출력(sum + ", " + div);
 }
 
 function mission2_2() {
-  const [입력1, 입력2] = arguments;
-  const [x1, y1] = 입력1.split(",");
-  const [x2, y2] = 입력2.split(",");
-  const dist1 = (x1 - x2) ** 2;
-  const dist2 = (y1 - y2) ** 2;
-  const res = Math.sqrt(dist1 + dist2);
+  const [[x1, y1], [x2, y2]] = [...arguments].map((each) =>
+    each.split(",").map((e) => Number(e))
+  );
+  if (getInputLengthError(...arguments)) return;
+
+  const res = Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
   출력(res);
 }
 
 function mission2_3() {
   const [입력1, 입력2] = arguments;
+  if (getInputLengthError(...arguments)) return;
+  if (getCheckIsNumber(arguments)) return 출력(errorMessage.pleaseUseNumber);
 
-  if (isNaN(입력2)) {
-    출력("숫자를 입력하세요");
-  } else if (입력2 > 100) {
+  if (입력2 > 100) {
     출력("너무 큰 숫자입니다");
   } else {
     const vol = ((Math.PI * 입력1 ** 2 * 입력2) / 3).toFixed(1);

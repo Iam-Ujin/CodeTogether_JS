@@ -3,6 +3,7 @@
 const errorMessage = {
   pleaseInput: "값을 입력해주세요!",
   pleaseUseNumber: "숫자만 입력가능합니다!",
+  pleaseInputSpecialSymbol: "특수문자를 포함해주세요.",
 };
 
 //공백 에러
@@ -100,3 +101,84 @@ function mission2_4() {
 // const -> 재할당 불가능
 // let -> 재할당 가능
 // 변수에 재할당이 필요할 때 let으로 선언해준다!
+
+function sum(a, b) {
+  return a + b;
+}
+
+function powWithSum(number) {
+  return Math.pow(number, 2);
+}
+
+function mission3_1() {
+  const [입력1, 입력2] = [...arguments].map((each) => Number(each));
+
+  const result = powWithSum(sum(입력1, 입력2));
+  출력(result);
+}
+
+function removeLastChat(입력) {
+  const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+
+  if (!regExp.test(입력)) {
+    return errorMessage.pleaseInputSpecialSymbol;
+  } else {
+    return 입력.slice(0, -1);
+  }
+}
+
+function mission3_2() {
+  const [입력1] = arguments;
+  const result = removeLastChat(입력1);
+  출력(result);
+}
+
+function calculate(반지름, 높이) {
+  const 밑면넓이 = 2 * Math.PI * Math.pow(반지름, 2);
+  const 측면넓이 = 2 * Math.PI * 반지름 * 높이;
+  const 전체넓이 = 밑면넓이 + 측면넓이;
+
+  return 전체넓이;
+}
+
+function mission3_3() {
+  const [반지름, 높이] = arguments;
+  const 넓이 = calculate(반지름, 높이).toFixed(1);
+
+  const result = `반지름 ${반지름}, 높이가 ${높이}인 원통의 넓이는 ${넓이} 입니다.`;
+  출력(result);
+}
+
+// 연속된 함수 호출과 stack
+
+function from10To2(number) {
+  const bin = number.toString(2);
+  return from2To8(bin);
+}
+function from2To8(number) {
+  const oct = parseInt(number, 2).toString(8);
+  return from8To16(oct);
+}
+function from8To16(number) {
+  const hex = parseInt(number, 8).toString(16);
+  return from16To10(hex);
+}
+function from16To10(number) {
+  const dec = parseInt(number, 16).toString(10);
+  return dec;
+}
+
+function mission4_1() {
+  const [입력1] = [...arguments].map((each) => Number(each));
+
+  if (getInputLengthError(...arguments)) return;
+
+  // const 이진수 = 입력1.toString(2);
+  // const 팔진수 = parseInt(이진수, 2).toString(8);
+  // const 십육진수 = parseInt(팔진수, 8).toString(16);
+  // const 십진수 = parseInt(십육진수, 16).toString(10);
+  // const programme = `${입력1}을 2진수로 바꾼 수 ${이진수}, 8진수로 바꾼 수 ${팔진수}, 16진수로 바꾼 수 ${십육진수}`;
+
+  const result = from10To2(입력1);
+  출력(result);
+}

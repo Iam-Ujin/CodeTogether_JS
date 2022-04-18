@@ -182,3 +182,65 @@ function mission4_1() {
   const result = from10To2(입력1);
   출력(result);
 }
+
+function mission5_1() {
+  const [num] = [...arguments].map((each) => Number(each));
+  if (getInputLengthError(...arguments)) return;
+
+  let even_array = [];
+  console.log(even_array);
+  console.log("-----------------------------");
+  for (let i = 0; i < num; i++) {
+    if (i % 2 == 0) {
+      even_array.push(Math.pow(i, 2));
+      console.log(even_array);
+    }
+  }
+
+  출력(even_array);
+}
+
+function mission5_2() {
+  const [text] = [...arguments];
+  if (getInputLengthError(...arguments)) return;
+
+  let result_array = [];
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] == "_") {
+      result_array.push(" ");
+    } else if (text[i] == "$" || text[i] == "#") {
+      continue;
+    } else if (text[i - 1] == "_") {
+      result_array.push(text[i].toUpperCase());
+    } else {
+      result_array.push(text[i]);
+    }
+  }
+
+  const result_text = result_array.join("");
+  출력(result_text);
+}
+
+function mission5_3() {
+  const [text] = [...arguments];
+  if (getInputLengthError(...arguments)) return;
+
+  let result_array = [];
+  let i = 0;
+
+  while (i < text.length) {
+    if (text[i] == "_") {
+      result_array.push(" ");
+    } else if (text[i] == "$" || text[i] == "#") {
+      continue;
+    } else if (text[i - 1] == "_") {
+      result_array.push(text[i].toUpperCase());
+    } else {
+      result_array.push(text[i]);
+    }
+    i++;
+  }
+
+  const result_text = result_array.join("");
+  출력(result_text);
+}

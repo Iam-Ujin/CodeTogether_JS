@@ -183,6 +183,8 @@ function mission4_1() {
   출력(result);
 }
 
+//mission5
+
 function mission5_1() {
   const [num] = [...arguments].map((each) => Number(each));
   if (getInputLengthError(...arguments)) return;
@@ -243,4 +245,56 @@ function mission5_3() {
 
   const result_text = result_array.join("");
   출력(result_text);
+}
+
+// mission 6
+
+function mission6_1() {
+  let [arr] = arguments;
+  // JSON.parse = string객체를 json객체로 변환시켜주는 메소드
+  arr = JSON.parse(arr);
+
+  const sumOfArr = arr.reduce((prev, cur) => prev + cur, 0);
+  const aver = sumOfArr / arr.length;
+  const nums = arr.join("+");
+  const result = `결과 ${aver} < (${nums}) / ${arr.length}>`;
+
+  출력(result);
+}
+
+function mission6_2() {
+  let [arr] = arguments;
+  const array = flatten(JSON.parse(arr));
+
+  const sumOfArr = array.reduce((prev, cur) => prev + cur, 0);
+  const aver = sumOfArr / array.length;
+  const nums = array.join("+");
+  const result = `결과 ${aver} < (${nums}) / ${array.length}>`;
+
+  출력(result);
+}
+
+//첫번째인자: 배열, 두번째인자: 함수
+//반환값 : 새로운 배열
+function map(arr, fn) {}
+
+//중첩된 배열을 평탄화해서 반환한다.
+//반환값 : 평탄화된 배열
+//ex) [1,2,[3,5],5] -> [1,2,3,5,5]
+function flatten(arr) {
+  let new_array = [].concat.apply([], arr);
+  return new_array;
+}
+// console.log(flatten([1,2,[3,5],5]))
+
+//숫자를 입력받아 소수점을 없애는 함수
+//반환값 : 소수점이 제거된 숫자
+function runFloor(num) {}
+
+function mission6_3() {
+  let [arr] = arguments;
+  arr = JSON.parse(arr);
+  const flattenedArr = flatten(arr);
+  const integerArr = map(flattenedArr, runFloor);
+  출력(integerArr);
 }

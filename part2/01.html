@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        /* reset */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        article {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* design */
+        body {
+        }
+
+        .login-box {
+            background-color: white;
+            width: 300px;
+            margin: 0 auto;
+            border: solid 1px #999;
+        }
+
+        .login-txt {
+            background-color: cadetblue;
+            color: #444;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        .login-wrap {
+            padding: 20px;
+        }
+
+        .login-input {
+            width: 100%;
+            display: block;
+            border: none;
+            border-bottom: solid 1px #333;
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
+        .login-input:focus::placeholder{
+            color:transparent;
+        }
+
+        .login-btn {
+            color: white;
+            background-color: cadetblue;
+            padding: 5px 20px;
+            border: 1px solid #999;
+            border-radius: 20px;
+        }
+
+        .login-btn:hover {
+            background-color: palevioletred;
+        }
+
+        .search-username {
+            float: right;
+            margin-top: 10px;
+            font-size: 0.5rem;
+            color: cadetblue;
+        }
+
+        .search-username:hover {
+            color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <article class="login-box">
+        <p class="login-txt">로그인 해주세요 🐻</p>
+        <form action="" class="login-wrap">
+            <input type="text" placeholder="username" class="login-input">
+            <input type="password" placeholder="password" class="login-input">
+            <button class="login-btn">Login</button>
+            <a href="#none" class="search-username">Forgot Username?</a>
+        </form>
+    </article>
+</body>
+</html>
